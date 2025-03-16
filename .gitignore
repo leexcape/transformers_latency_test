@@ -1,0 +1,24 @@
+# Pycharm Files
+.idea/
+
+# Python Comiled Files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Envs
+venv/
+env/
+
+# Modified Libraries
+peft_timestamp/
+transformers/
+
+# Datasets
+vit-base-patch16-224-in21k-finetuned-lora-food101/
+
+# Results & Data
+results/
+vit_layer_data/
+
