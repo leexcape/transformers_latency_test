@@ -10,6 +10,8 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import torch
+from datetime import datetime
+
 matplotlib.use("Agg")  # Requires X11 forwarding
 # Set device
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -17,7 +19,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 print("using device: ", device)
 
 # Load saved matrices
-checkpoint = torch.load("/home/cc/MyWorkspace/lora_test/data/weights/lora_matrices_20250307_18_54_57.pth")
+checkpoint = torch.load("/home/cc/MyWorkspace/transformers_latency_test/data/weights/lora_matrices_20250321_17_32_19_794.pth")
 
 # Reconstruct layers
 in_features = checkpoint["base_weight"].shape[1]
@@ -130,7 +132,7 @@ plt.legend()
 
 # Save figure as a high-quality JPG file
 timestamp = datetime.now().strftime("%Y%m%d_%H_%M_%S_%f")[:-3]
-filename = "results/latency_test_1_" + timestamp + ".jpg"
+filename = "results/latency_test_3_" + timestamp + ".jpg"
 plt.savefig(filename, dpi=300, bbox_inches='tight')
 
 print(f"Plot saved as {filename}")

@@ -14,6 +14,7 @@ num_linear_layers = 10  # 每个 ViT 层有 10 个 Linear 层
 
 # 初始化文件的函数
 def log_vit_layer_new_file():
+    return None
     timestamp = time.strftime("%Y-%m-%d-%H-%M-%S")
     latency_file_prefix = timestamp + "-LayerLatency.csv"
     latency_file = os.path.join(save_path, latency_file_prefix)
@@ -27,6 +28,7 @@ def log_vit_layer_new_file():
 # 记录数据的函数（支持多个 ViT 层）
 def log_vit_layer_data(index, start_time, end_time, input_tensor, output_tensor):
     # Get stack
+    return None
     matching_paths = [
         "/home/cc/MyWorkspace/lora_test/",
         "/home/cc/miniconda3/envs/transformers_env/lib/python3.10/site-packages/transformers"

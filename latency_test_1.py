@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import torch
 import os
 import random
+from datetime import datetime
 
 matplotlib.use("Agg")  # Avoids GUI issues
 
@@ -154,6 +155,10 @@ plt.xlabel("Iteration")
 plt.ylabel("Latency (ms)")
 plt.title("Inference Latency per Iteration (Randomized Weights, Cache Cleared)")
 plt.legend()
-plt.savefig("latency_plot_cache_cleared.png")  # ✅ Save figure as an image
 
-print("Latency analysis completed and saved!")
+# Save figure as a high-quality JPG file
+timestamp = datetime.now().strftime("%Y%m%d_%H_%M_%S_%f")[:-3]
+filename = "results/latency_test_1_" + timestamp + ".jpg"
+plt.savefig(filename, dpi=300, bbox_inches='tight')
+
+print(f"Plot saved as {filename}")

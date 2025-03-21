@@ -5,13 +5,14 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 
 # Set device (Modify here if you want to force CPU)
+# device = torch.device("cpu")
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
 
 # Define matrix sizes
-a = 128  # Input batch size
-b = 1024  # Large dimension
-r = 64  # Smaller rank for LoRA
+a = 197  # Input batch size
+b = 768  # Large dimension
+r = 16  # Smaller rank for LoRA
 
 # Initialize random tensors on the selected device
 x = torch.randn(a, b, device=device)
@@ -68,12 +69,13 @@ plt.plot(lat_3, label=f"3-LoRA Layer (Mean: {lat_3.mean():.3f} ms, Std: {lat_3.s
 plt.title("Inference Latency per Iteration")
 plt.xlabel("Iteration")
 plt.ylabel("Latency (ms)")
+plt.ylim(0, 0.5)
 plt.legend()
 plt.grid(True)
 
 # Save figure as a high-quality JPG file
 timestamp = datetime.now().strftime("%Y%m%d_%H_%M_%S_%f")[:-3]
-filename = "results/latency_test_1_" + timestamp + ".jpg"
+filename = "results/latency_test_4_" + timestamp + ".jpg"
 plt.savefig(filename, dpi=300, bbox_inches='tight')
 
 print(f"Plot saved as {filename}")

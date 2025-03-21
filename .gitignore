@@ -8,7 +8,8 @@
 
 # Modified Libraries
 peft_timestamp/
-transformers/
+transformers_timestamp/
+data/
 
 # Datasets
 vit-base-patch16-224-in21k-finetuned-lora-food101/
