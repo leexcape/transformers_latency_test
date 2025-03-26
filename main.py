@@ -178,4 +178,13 @@ trainer = Trainer(
     compute_metrics=compute_metrics,
     data_collator=collate_fn,
 )
+
+
+# x = image_processor(dataset[1:2]['image'][0].convert("RGB"), return_tensors="pt")
+# x = collate_fn(x)
+# y = lora_model(x)
+loaded_input = torch.load('data/inputs/batch_input.pt')
+y = lora_model(loaded_input)
 train_results = trainer.evaluate()
+
+xx1=image_processor(dataset[1:2]['image'][0].convert("RGB"), return_tensors="pt").data['pixel_values'].squeeze(0)

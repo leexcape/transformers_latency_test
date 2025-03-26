@@ -11,7 +11,7 @@ print(f"Using device: {device}")
 
 # Define matrix sizes
 a = 197  # Input batch size
-b = 768  # Large dimension
+b = 768*64  # Large dimension
 r = 16  # Smaller rank for LoRA
 
 # Initialize random tensors on the selected device
@@ -19,7 +19,7 @@ x = torch.randn(a, b, device=device)
 M = torch.randn(b, b, device=device)  # Full-rank matrix
 lora_A = torch.randn(b, r, device=device)  # LoRA A (Low-rank)
 lora_B = torch.randn(r, b, device=device)  # LoRA B (Low-rank)
-dropout = torch.nn.Dropout(p=0.1).to(device)  # Dropout layer
+dropout = torch.nn.Dropout(p=0.1).to(device).eval()  # Dropout layer
 scaling = 0.1
 y = torch.randn(a, b, device=device)  # Bias term for 0-LoRA
 
